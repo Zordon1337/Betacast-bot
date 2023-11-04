@@ -8,7 +8,8 @@ Tool for botting BetaCast
 ```
 ViewBOT
 SubBOT
-CommentBOT - TODO
+Profile Comments bot
+Video Comment bot - soon
 ```
 
 ## Screenshots

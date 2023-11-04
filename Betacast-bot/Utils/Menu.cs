@@ -20,23 +20,24 @@ namespace Betacast_bot.Utils
             switch(Console.ReadKey().KeyChar)
             {
                 case '1':
-                    ViewBot();
+                    ViewBotUI();
                     break;
                 case '2':
-                    SubBot();
+                    SubBotUI();
                     break;
                 case '3':
-                    Console.WriteLine("Soon");
+                    VideoCommentBotUI();
                     break;
                 case '4':
-                    ProfileCommentBot2();
+                    ProfileCommentBotUI();
                     break;
                 default:
                     Console.WriteLine("Unknown Command");// if not 1,2 or 3 then we will show this to console
+                    Menu men = new Menu();
                     break;
             }
         }
-        public static void SubBot()
+        public static void SubBotUI()
         {
             Console.Clear();
             Console.WriteLine("Type username of account that you want bot");
@@ -46,7 +47,7 @@ namespace Betacast_bot.Utils
             int inint = int.Parse(amount);
             Bots.SubBOT.SubBot(user, inint);
         }
-        public static void ViewBot()
+        public static void ViewBotUI()
         {
             Console.Clear();
             Console.WriteLine("Type Video ID that you want bot");
@@ -56,17 +57,30 @@ namespace Betacast_bot.Utils
             int inint = int.Parse(amount);
             Bots.ViewBOT.Bot(id, inint);
         }
-        public static void ProfileCommentBot2()
+        public static void ProfileCommentBotUI()
         {
             Console.Clear();
             Console.WriteLine("Type username of user that you want bot");
             string user = Console.ReadLine();
-            Console.WriteLine("What Message do you to spam");
+            Console.WriteLine("What comments do you to spam");
             string msg = Console.ReadLine();
             Console.WriteLine("How much comments do you want to add");
             string amountofcmts = Console.ReadLine();
             int intoint = int.Parse(amountofcmts);
             ProfileCommentBot.Bot(user, msg, intoint);
+        }
+        public static void VideoCommentBotUI()
+        {
+            Console.Clear();
+            Console.WriteLine("I need to find exploit for pressing button that is not 'interactible' even tho user can click it anyways");
+            /*Console.WriteLine("Type ID of Video that you want bot");
+            string id = Console.ReadLine();
+            Console.WriteLine("What Comments do you to spam");
+            string msg = Console.ReadLine();
+            Console.WriteLine("How much comments do you want to add");
+            string amountofcmts = Console.ReadLine();
+            int intoint = int.Parse(amountofcmts);
+            VideoCommentBot.Bot(id, msg, intoint);*/
         }
     }
 }

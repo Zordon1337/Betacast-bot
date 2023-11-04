@@ -1,16 +1,17 @@
 ﻿using Betacast_bot.Utils;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using OpenQA.Selenium.Support;
+using System.Threading;
+using OpenQA.Selenium.Firefox;
 
 namespace Betacast_bot.Bots
 {
-    public class ViewBOT
+    public class ProfileCommentBot
     {
-        public static void Bot(string videoid, int num)
+        public static void Bot(string user, string msg, int num)
         {
             FirefoxOptions options = new FirefoxOptions();
             FirefoxDriver driver = new FirefoxDriver();
@@ -18,34 +19,32 @@ namespace Betacast_bot.Bots
             for (int i = 0; i < num; i++) 
             {
                 // registering account
-                /*string username = Randomize.GenerateUserName();
+                string username = Randomize.GenerateUserName();
                 driver.Navigate().GoToUrl(Utils.Utils.URL + "/signup.php");
+                
                 driver.FindElement(By.Name("username")).SendKeys(username);
                 driver.FindElement(By.Name("password")).SendKeys("JustAnNormalPassword");
                 driver.FindElement(By.Name("confirm_password")).SendKeys("JustAnNormalPassword");
                 driver.FindElement(By.ClassName("btn-primary")).Click();
-
+                
                 // logging in
                 driver.FindElement(By.Name("username")).SendKeys(username);
                 driver.FindElement(By.Name("password")).SendKeys("JustAnNormalPassword");
                 driver.FindElement(By.ClassName("btn-primary")).Click();
-                // ^ ofc its pasted from SubBOT because there were not point to literally make it from scratch while i made it already
-                */
-                // navigating to the video
-                driver.Navigate().GoToUrl(Utils.Utils.URL + $"/watch?v={videoid}");
-                
-                
 
-                // Switch to the iframe context
-                driver.SwitchTo().Frame(0);
+                // go to profile
+                driver.Navigate().GoToUrl(Utils.Utils.URL + $"/profile_add_comment?user={user}");
 
-                // clicking the play button because in betacast video doesn't start playing automaticaly
-                // and to gain a view video needs to be "played"
-                driver.FindElement(By.Id("playpause")).Click();
+                // Finding the TextArea
+                var textarea = driver.FindElement(By.Name("msg"));
+                // Finding submit button
+                var submitbtn = driver.FindElement(By.Name("post_comment"));
 
-                // Switch back to the default content
-                driver.SwitchTo().DefaultContent();
+                // writing the message to the textarea
+                textarea.SendKeys(msg);
 
+                // submiting the comment
+                submitbtn.Click();
                 // logging out
                 driver.Navigate().GoToUrl(Utils.Utils.URL + "/logout.php");
             }

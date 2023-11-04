@@ -5,6 +5,10 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using OpenQA.Selenium.Support;
 using System.Threading;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Chromium;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Firefox;
 
 namespace Betacast_bot.Bots
 {
@@ -12,10 +16,11 @@ namespace Betacast_bot.Bots
     {
         public static void SubBot(string user, int num)
         {
-            EdgeOptions options = new EdgeOptions();
-            EdgeDriver driver = new EdgeDriver();
+            FirefoxOptions options = new FirefoxOptions();
+            FirefoxDriver driver = new FirefoxDriver();
 
-            for (int i = 0; i < num; i++) // Change 'num <= i' to 'i < num'
+
+            for (int i = 0; i < num; i++) 
             {
                 // registering account
                 string username = Randomize.GenerateUserName();

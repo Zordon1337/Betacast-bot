@@ -10,6 +10,7 @@ ViewBOT
 SubBOT
 Profile Comments bot
 Video Comment bot - soon
+Kinda realistic random usernames, more realistic than XkexQW23
 ```
 
 ## Screenshots
